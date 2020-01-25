@@ -1,20 +1,8 @@
-import React, { FunctionComponent, useState } from 'react';
-import ReactDom from 'react-dom';
-interface props{
-    
+import reactDOM from 'react-dom';
+import React from 'react';
+import Icon from './icon/icon';
+const onClick:React.MouseEventHandler = (e) => {
+    console.log(e)
+    console.log((e.target as SVGUseElement).href)
 }
-
-const App:FunctionComponent<props> = (props) => {
-    const [n] = useState(1)
-    onclick = () => {
-        return null
-    }
-    return (
-        <React.Fragment>
-            <div>{n}</div>
-            <button onClick={onclick}>+1</button>
-        </React.Fragment>
-    )
-}
-
-ReactDom.render(<App/>,document.body);
+reactDOM.render(<Icon name='alipay' onClick={onClick}/>,document.querySelector('#root'))

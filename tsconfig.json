@@ -17,9 +17,12 @@
         "importHelpers": true,
         "strictNullChecks": true,
         "allowSyntheticDefaultImports": true,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
     },
-    "include": [],
+    "include": [
+        "types/**/*",
+        "lib/**/*"
+    ],
     "exclude": [
         "node_modules",
         "build",

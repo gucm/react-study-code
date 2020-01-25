@@ -1,16 +1,19 @@
 import React from 'react';
-import './static/image/wechat.svg'
+import './importIcons';
+import classes from '../api/classnames';
+import './icon.scss';
 
-interface IconProps{
-    name:string,
+interface IconProps extends React.SVGAttributes<SVGElement> {
 }
+
 const Icon: React.FunctionComponent<IconProps> = (props) => {
+    const {className,name,...restProps} = props
     return (
-        <span>
-            <svg>
-                <use xlinkHref={'#wechat'}/>
-            </svg>
-        </span>
-    )
-}
+        <svg className={classes('gui-icon',className)}
+             {...restProps}
+        >
+            <use xlinkHref={`#${name}`}/>
+        </svg>
+    );
+};
 export default Icon;

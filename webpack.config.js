@@ -18,6 +18,29 @@ module.exports = {
             {// 对tsx ts 进行转义
                 test: /\.tsx?$/, 
                 loader: 'awesome-typescript-loader',
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-sprite-loader'
+            },
+            {
+                test: /\.s([ac])ss$/,
+                // use: [
+                //     devMode ? 'style-loader' : {
+                //         loader: MiniCssExtractPlugin.loader,
+                //         options : {
+                //             // publicPath: '../'
+                //         }
+                //     },
+                //     'css-loader',
+                //     {
+                //         loader:'sass-loader',
+                //         options: {
+                //             includePaths: [path.resolve(__dirname,'stylesheets', 'include')]
+                //         }
+                //     }
+                // ]
+                use:['style-loader','css-loader','sass-loader']
             }
         ]
     },
