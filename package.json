@@ -1,6 +1,6 @@
 {
-  "name": "react-study-code",
-  "version": "1.0.0",
+  "name": "gcmui",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
@@ -20,6 +20,9 @@
   "bugs": {
     "url": "https://github.com/gucm/react-study-code/issues"
   },
+  "files": [
+    "/dist/**/*"
+  ],
   "homepage": "https://github.com/gucm/react-study-code#readme",
   "devDependencies": {
     "@babel/preset-react": "^7.7.4",
