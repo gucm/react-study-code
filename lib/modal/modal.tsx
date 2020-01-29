@@ -57,7 +57,6 @@ const Modal:React.FunctionComponent<IDialogProps> = (props) => {
             handleCancel(e)
         }
     }
-    console.log('123')
     return (
         props.visible ? 
         <React.Fragment>
