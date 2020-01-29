@@ -1,0 +1,83 @@
+@import "../helper";
+.gui-modal{
+    background: white;
+    position: fixed;
+    // width: 10em;
+    // height: 10em;
+    left:50%;
+    top: 50%;
+    border-radius: 4px;
+    transform: translate(-50%,-50%);
+    &-mask{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height:100%;
+        background-color: rgba(0, 0, 0, 0.45)
+    }
+    &-header{
+        padding: 16px 24px;
+        color: rgba(0, 0, 0, 0.65);
+        background: #fff;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 4px 4px 0 0;
+        .gui-modal-title{
+            margin: 0;
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+            word-wrap: break-word;
+        }
+    }
+    &-body{
+        padding: 24px;
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
+    &-footer{
+        padding: 10px 16px;
+        text-align: right;
+        background: transparent;
+        border-top: 1px solid #e8e8e8;
+        border-radius: 0 0 4px 4px;
+        button + button{
+            margin-bottom: 0;
+            margin-left: 8px;
+        }
+    }
+    &-close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        padding: 0;
+        color: rgba(0, 0, 0, 0.45);
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+        background: transparent;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        -webkit-transition: color 0.3s;
+        transition: color 0.3s;
+        &-x{
+            display: block;
+            width: 56px;
+            height: 56px;
+            font-size: 16px;
+            font-style: normal;
+            line-height: 56px;
+            text-align: center;
+            text-transform: none;
+            text-rendering: auto;
+        }
+    }
+    p{
+        margin: 0;
+        padding: 0;
+    }
+}

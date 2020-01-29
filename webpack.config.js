@@ -24,7 +24,7 @@ module.exports = {
                 loader: 'svg-sprite-loader'
             },
             {
-                test: /\.sass$/,
+                test: /\.s([ac])ss$/,
                 // use: [
                 //     devMode ? 'style-loader' : {
                 //         loader: MiniCssExtractPlugin.loader,
@@ -40,7 +40,7 @@ module.exports = {
                 //         }
                 //     }
                 // ]
-                use:['style-loader','css-loader','less-loader']
+                use:['style-loader','css-loader','sass-loader']
             }
         ]
     },

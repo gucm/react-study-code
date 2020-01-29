@@ -18,6 +18,7 @@
         "strictNullChecks": true,
         "allowSyntheticDefaultImports": true,
         "noUnusedLocals": false,
+        "skipLibCheck": true,
     },
     "include": [
         "types/**/*",
