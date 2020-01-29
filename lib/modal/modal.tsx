@@ -12,7 +12,7 @@ interface IDialogProps{
     title?:string|React.ReactNode
     /** 点击模态框右上角叉、取消按钮、Props.maskClosable 值为 true 时的遮罩层时的回调 */
     onCancel?:(e: React.MouseEvent<HTMLElement>) => void;
-    
+
     /** 点击确定回调 */
     onOk?: (e: React.MouseEvent<HTMLElement>) => void;
     /** 确认按钮文字 */
@@ -57,8 +57,6 @@ const Modal:React.FunctionComponent<IDialogProps> = (props) => {
             handleCancel(e)
         }
     }
-    console.log(props.footer === null)
-    console.log(props.footer === undefined)
     return (
         props.visible ? 
         <React.Fragment>
