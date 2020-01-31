@@ -1,19 +1,32 @@
-const base = require('./webpack.config.js')
-module.exports = Object.assign({},base,{
-    mode: 'production', // 模式
-    externals: { // 告诉webpack这是外部的库 不是内部的库
+const base = require('./webpack.config')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+
+module.exports = Object.assign({}, base, {
+    mode: 'production',
+    entry: {
+        ...base.entry,
+        example: './example.tsx'
+    },
+    externals: {
         react: {
             commonjs: 'react',
             commonjs2: 'react',
             amd: 'react',
-            root: 'React',
+            root: 'React'
         },
         'react-dom': {
             commonjs: 'react-dom',
             commonjs2: 'react-dom',
             amd: 'react-dom',
-            root: 'ReactDom'
-        },
-    }
-
+            root: 'ReactDOM'
+        }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title:'gcmui',
+            template: "example.html",
+            filename: 'example.html'
+        })
+    ]
 })
