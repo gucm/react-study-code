@@ -26,7 +26,7 @@ module.exports = Object.assign({}, base, {
         new HtmlWebpackPlugin({
             title:'gcmui',
             template: "example.html",
-            filename: 'example.html'
+            filename: 'index.html'
         })
     ]
 })
