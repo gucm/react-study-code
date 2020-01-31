@@ -1,8 +1,10 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import './modal.scss'
 import '../index.scss'
 import {Icon,Button} from '../index'
 import {scopedClassMaker} from '../api/classes'
+import classes from '../api/classnames'
 interface IDialogProps{
     /** 对话框是否可见 */
     visible:boolean
@@ -27,6 +29,10 @@ interface IDialogProps{
     mask?: boolean;
     /** 点击蒙层是否允许关闭 */
     maskClosable?:boolean
+    /** 外层容器类名 */
+    wrapClassName?:string
+    /** 是否显示右上角的关闭按钮 */
+    closable?:boolean
 }
 
 
@@ -57,18 +63,21 @@ const Modal:React.FunctionComponent<IDialogProps> = (props) => {
             handleCancel(e)
         }
     }
-    return (
-        props.visible ? 
+
+    const renderDOM = props.visible ? 
         <React.Fragment>
             {
                 props.mask &&  <div className={scopedClass('mask')} onClick={handleMaskCancel}/>
             }
-            <div className={scopedClass()} style={{width:props.width}}>
-                <div className={scopedClass('close')} onClick={handleCancel}>
-                    <span className={scopedClass('close-x')}>
-                        <Icon name='close'/>  
-                    </span>
-                </div>
+            <div className={classes(scopedClass(),props.wrapClassName)} style={{width:props.width}}>
+                {
+                    props.closable && 
+                    <div className={scopedClass('close')} onClick={handleCancel}>
+                        <span className={scopedClass('close-x')}>
+                            <Icon name='close'/>  
+                        </span>
+                    </div>
+                }
                 {
                     props.title && 
                     <div className={scopedClass('header')}>
@@ -93,9 +102,9 @@ const Modal:React.FunctionComponent<IDialogProps> = (props) => {
                 }
 
             </div> 
-        </React.Fragment>
-        :
-        null
+        </React.Fragment>:null
+    return (
+        ReactDOM.createPortal(renderDOM,document.body)
     )
 }
 Modal.defaultProps = {
@@ -106,6 +115,70 @@ Modal.defaultProps = {
     mask:true,
     maskClosable:true
 }
+interface IConfirmProps{
+    content:string|React.ReactNode
+    className?:string
+    title?:string|React.ReactNode
+    mask?:boolean
+    maskClosable?:boolean
+    onCancel?:(e: React.MouseEvent<HTMLElement>) => void
+    onOK?:(e: React.MouseEvent<HTMLElement>) => void
+    /** 确认按钮文字 */
+    okText?:React.ReactNode
+    /** 确认按钮类型 */
+    okType?: string;
+    /** 取消按钮文字 */
+    cancelText?:React.ReactNode
+}
+const confirm = (props:IConfirmProps) => {
+    const confirmClose = () => {
+        ReactDOM.render(React.cloneElement(component,{visible:false}),div)
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+    }
+    const handleCancel = (e:React.MouseEvent<HTMLElement>) => {
+        if(props.onCancel){
+            props.onCancel(e)
+        }
+        confirmClose()
+    }
+    const handleOk = (e:React.MouseEvent<HTMLElement>)=>{
+        if(props.onOK){
+            props.onOK(e)
+        }
+        confirmClose()
+    }
+    const confirmBody = (
+        <div className={scopedClass('confirm-body-wrapper')}>
+            <div className={scopedClass('confirm-body')}>
+                {props.content}
+            </div>
+            <div className={scopedClass('confirm-btns')}>
+                <Button onClick={handleCancel}>{props.cancelText || '取消'}</Button>
+                <Button type={props.okType || 'primary'} onClick={handleOk}>{props.okText || '确认'}</Button>
+            </div>
+        </div> 
+    )
 
 
+    const component = (
+        <Modal
+            visible={true}
+            title={props.title || ''}
+            wrapClassName={props.className}
+            closable={false}
+            mask={props.mask || true}
+            maskClosable={props.maskClosable || false}
+            footer={null}
+            width={416}
+        >
+            {confirmBody}
+        </Modal>   
+    )
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    ReactDOM.render(component,div)
+}
+
+export {confirm}
 export default Modal

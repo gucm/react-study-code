@@ -1,0 +1,58 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+*::after{box-sizing: border-box;}
+*::before{box-sizing: border-box;}
+ui,ol{list-style: none;}
+a{text-decoration: none;color:inherit}
+pre {
+    font-family: "Fira Code Medium ", Consolas monospace ;
+}
+.page{
+    background: #ffffff;
+    min-height: 100vh;
+}
+.header{
+    background: #eeeeee;
+    padding: 8px;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    >span{
+        color: #00ADB5
+    }
+}
+.sider{
+    border-right: 1px solid #eeeeee;
+    margin-right: 16px;
+    h2{
+        padding: 8px;
+    }
+    ul{
+        min-width: 12em;
+        >li{
+        }
+    }
+    a{
+        padding: 8px;
+        color:#333;
+        display: block;
+        &:hover{
+            color:#00ADB5;
+        }
+        &.active{
+            color:white;
+            background: desaturate(#00ADB5,50%);
+        }
+    }
+}
+.content{
+    padding-top: 16px;
+}
+.footer{
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+}

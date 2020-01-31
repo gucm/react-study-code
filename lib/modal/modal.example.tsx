@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from './modal'
+import Modal,{confirm} from './modal'
 
 
 const ModalExample:React.FunctionComponent = () => {
@@ -25,6 +25,9 @@ const ModalExample:React.FunctionComponent = () => {
                 <p>Some contents...</p>
                 <p>Some contents...</p>
             </Modal>  
+
+
+            <button onClick={()=>(confirm({content:'1',okText:'xx',cancelText:'yy'}))}>alert</button>
         </div>
     )
 }

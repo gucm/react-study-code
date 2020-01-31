@@ -1,0 +1,43 @@
+@import '../helper.scss';
+
+.gui-layout{
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    // background: #f0f2f5;
+    &-has-sider{
+        flex-direction: row;
+    }
+    &-header{
+        height: 64px;
+        padding: 0 50px;
+        // line-height: 64px;
+        // background: #7dbcea;
+        // color: #fff;
+        flex: 0 0 auto;
+    }
+    &-content{
+        // background: $main-color;
+        // color: #fff;
+        min-height: 120px;
+        // line-height: 120px;
+        flex:auto;
+    }
+    &-footer{
+        padding: 24px 50px;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 14px;
+        // color: #fff;
+        // background: #7dbcea;
+        flex: 0 0 auto;
+    }
+    &-sider{
+        flex: 0 0 200px;
+        max-width: 200px;
+        min-width: 200px;
+        width: 200px;
+        // background: #3ba0e9;
+        // color: #fff;
+        // line-height: 120px;
+    }
+}

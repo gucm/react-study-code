@@ -1,0 +1,17 @@
+@import '../helper.scss';
+.examples{
+    background: #f0f2f5;
+    .gui-layout-header{
+        background: #7dbcea;
+    }
+    .gui-layout-content{
+        background: $main-color;
+    }
+    .gui-layout-footer{
+        background: #7dbcea;
+    }
+    .gui-layout-sider{
+        background: #3ba0e9;
+    }
+
+}
